@@ -2,48 +2,19 @@
 //           the playfield in the console with characters. 
 #include <stdlib.h>
 #include <iostream>
-/*
-int main()
+
+#define WIDTH 5
+#define HEIGHT 8
+
+int cells[WIDTH * HEIGHT];
+
+void drawPlayfield()
 {
-    int cells[4 * 4] = {
-        0, 0, 0, 0,
-        0, 0, 0, 1,
-        0, 1, 0, 0,
-        0, 0, 0, 0,
-    };
+    for (int row = 0; row < HEIGHT; row++) {
+        for (int column = 0; column < WIDTH; column++) {
 
-    for (int row = 0; row < 4; row++) {
-        for (int column = 0; column < 4; column++) {
-            int cell_val = cells[? ? ? ? ]; // <------ how to access the correct cell?
-
-            if (cell_val == 0) {
-                std::cout << '-';
-            }
-            else {
-                std::cout << 'x';
-            }
-        }
-        std::cout << '\n';
-    }
-
-    return EXIT_SUCCESS;
-}*/
-
-// SOLUTION 1: Increment an index variable each time we draw a cell.
-int main()
-{
-    int cells[4 * 4] = {
-        0, 0, 0, 0,
-        0, 0, 0, 1,
-        0, 1, 0, 0,
-        0, 0, 0, 0,
-    };
-
-    int cell_index = 0;
-    for (int row = 0; row < 4; row++) {
-        for (int column = 0; column < 4; column++) {
-            int cell = cells[cell_index];
-            cell_index++;
+            int index = row * WIDTH + column;
+            int cell = cells[index];
 
             if (cell == 0) {
                 std::cout << '-';
@@ -54,41 +25,52 @@ int main()
         }
         std::cout << '\n';
     }
-
-    return EXIT_SUCCESS;
 }
 
+int input()
+{
+    int x;
+    int y;
 
+	std::cout << "Coordonees de recherche ?" << std::endl;
+
+    std::cout << "X ?" << std::endl;
+    std::cin >> x;
+
+    std::cout << "Y ?" << std::endl;
+    std::cin >> y;
+
+    int result;
+    result = (y - 1) * WIDTH + (x - 1);
+
+    return result;
+
+}
 
 // SOLUTION 2: Calculate the cell index based on row and column
-
-/*
 int main()
 {
-    int cells[4 * 4] = {
-        0, 0, 0, 0,
-        0, 0, 0, 1,
-        0, 1, 0, 0,
-        0, 0, 0, 0,
-    };
 
-    for (int row = 0; row < 4; row++) {
-        for (int column = 0; column < 4; column++) {
-            int cell = cells[row * 4 + column];
+    bool treasureFound = false;
 
-            if (cell == 0) {
-                std::cout << '-';
-            }
-            else {
-                std::cout << 'x';
-            }
+	do
+	{
+        int idxSearch = input();
+
+        if(cells[idxSearch] == 0)
+        {
+            std::cout << "no treasure" << std::endl;
+        }else
+        {
+            std::cout << "treasure found !" << std::endl;
         }
-        std::cout << '\n';
-    }
+
+		drawPlayfield();
+
+    } while (treasureFound == false);
 
     return EXIT_SUCCESS;
 }
-*/
 
 // NEXT STEPS:
 //    - make "cells" a global variable (move it outside main, near the top of the file).
