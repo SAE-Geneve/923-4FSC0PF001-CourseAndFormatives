@@ -3,71 +3,57 @@
 #include <stdlib.h>
 #include <iostream>
 
-#define WIDTH 5
-#define HEIGHT 8
+#include "Map.h"
 
-int cells[WIDTH * HEIGHT];
-
-void drawPlayfield()
-{
-    for (int row = 0; row < HEIGHT; row++) {
-        for (int column = 0; column < WIDTH; column++) {
-
-            int index = row * WIDTH + column;
-            int cell = cells[index];
-
-            if (cell == 0) {
-                std::cout << '-';
-            }
-            else {
-                std::cout << 'x';
-            }
-        }
-        std::cout << '\n';
-    }
-}
-
-int input()
-{
-    int x;
-    int y;
-
-	std::cout << "Coordonees de recherche ?" << std::endl;
-
-    std::cout << "X ?" << std::endl;
-    std::cin >> x;
-
-    std::cout << "Y ?" << std::endl;
-    std::cin >> y;
-
-    int result;
-    result = (y - 1) * WIDTH + (x - 1);
-
-    return result;
-
-}
+#include "Random.h"
 
 // SOLUTION 2: Calculate the cell index based on row and column
 int main()
 {
 
+    initializeMap();
+
     bool treasureFound = false;
+
+    int plateau[16] = {
+        0,0,0,0,
+        0,0,0,0,
+        0,0,0,0,
+        0,0,0,0
+    };
+
+    int coffre[16] = {
+    0,0,0,0,
+    0,0,1,0,
+    0,0,0,0,
+    1,0,0,0
+    };
+    
+    int nbAttempts = 0;
+
+    for(int i = 0; treasureFound || i < 4; i++)
 
 	do
 	{
+        //system("cls");
+
         int idxSearch = input();
 
-        if(cells[idxSearch] == 0)
+        if(cells[idxSearch] == TreasureTile::plateau)
         {
             std::cout << "no treasure" << std::endl;
+            treasureFound = false;
         }else
         {
             std::cout << "treasure found !" << std::endl;
+            treasureFound = true;
         }
 
-		drawPlayfield();
+        drawPlayfield();
 
-    } while (treasureFound == false);
+        nbAttempts++;
+
+    } while (treasureFound == false && nbAttempts < 3);
 
     return EXIT_SUCCESS;
 }

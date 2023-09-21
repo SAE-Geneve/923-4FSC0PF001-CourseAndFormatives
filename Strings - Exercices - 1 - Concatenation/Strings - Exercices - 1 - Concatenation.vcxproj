@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{48684622-92d5-4f3d-86a0-27549fb4bed2}</ProjectGuid>
-    <RootNamespace>TreasureHunt</RootNamespace>
+    <ProjectGuid>{8356e73d-eb52-45e6-8105-fe42de8fbfb3}</ProjectGuid>
+    <RootNamespace>StringsExercices1Concatenation</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,13 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Random.cpp" />
-    <ClCompile Include="TreasureHunt.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="Random.h" />
+    <ClCompile Include="Strings - Exercices - 1 - Concatenation.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

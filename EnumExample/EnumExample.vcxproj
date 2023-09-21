@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{48684622-92d5-4f3d-86a0-27549fb4bed2}</ProjectGuid>
-    <RootNamespace>TreasureHunt</RootNamespace>
+    <ProjectGuid>{62b91044-3f83-4bbf-b191-58a77fd8db64}</ProjectGuid>
+    <RootNamespace>EnumExample</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,13 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Random.cpp" />
-    <ClCompile Include="TreasureHunt.cpp" />
+    <ClCompile Include="EnumExample.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="Random.h" />
+    <ClInclude Include="Status.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
