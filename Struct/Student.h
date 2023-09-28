@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-enum Section
+enum class Section
 {
 	GameArt,
 	GameProg,
@@ -10,8 +10,8 @@ enum Section
 
 struct Student
 {
-	std::string Name;
 	std::string FirstName;
+	std::string Name;
 	int Age;
-	Section Section;
+	Section StudentSection;
 };

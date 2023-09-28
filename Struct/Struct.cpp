@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <vector>
 
@@ -11,7 +10,7 @@ int main()
     jayson.FirstName = "Jayson";
     jayson.Name = "Malet";
     jayson.Age = 25;
-    jayson.Section = Section::GameProg;
+    jayson.StudentSection = Section::GameProg;
 
     Student anthony{
     "Barman", "Anthony", 20, Section::GameProg
