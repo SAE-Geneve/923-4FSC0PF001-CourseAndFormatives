@@ -3,9 +3,15 @@
 
 #include <iostream>
 
-int ResetVariable()
+
+void Input(int& x, int& y)
 {
-	return 12243;
+
+}
+
+void ResetVariable(int& variable)
+{
+	variable = 0;
 }
 
 int main()
@@ -14,7 +20,7 @@ int main()
 
 	std::cout << "Value ? " << firstVariable << std::endl;
 
-	firstVariable = ResetVariable();
+	ResetVariable(firstVariable);
 
 	std::cout << "Value ? " << firstVariable << std::endl;
 

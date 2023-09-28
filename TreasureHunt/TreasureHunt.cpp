@@ -7,55 +7,40 @@
 
 #include "Random.h"
 
+#define DEBUG_INDEX 158
+
 // SOLUTION 2: Calculate the cell index based on row and column
 int main()
 {
+	bool treasureFound = false;
+	int nbAttempts = 0;
 
-    initializeMap();
-
-    bool treasureFound = false;
-
-    int plateau[16] = {
-        0,0,0,0,
-        0,0,0,0,
-        0,0,0,0,
-        0,0,0,0
-    };
-
-    int coffre[16] = {
-    0,0,0,0,
-    0,0,1,0,
-    0,0,0,0,
-    1,0,0,0
-    };
-    
-    int nbAttempts = 0;
-
-    for(int i = 0; treasureFound || i < 4; i++)
+	InitializeMap();
 
 	do
 	{
-        //system("cls");
+		system("cls");
 
-        int idxSearch = input();
+		int idxSearch = Input();
 
-        if(cells[idxSearch] == TreasureTile::plateau)
-        {
-            std::cout << "no treasure" << std::endl;
-            treasureFound = false;
-        }else
-        {
-            std::cout << "treasure found !" << std::endl;
-            treasureFound = true;
-        }
+		if (Cells[idxSearch] == TreasureTiles::Empty)
+		{
+			std::cout << "no treasure" << std::endl;
+			treasureFound = false;
+		}
+		else
+		{
+			std::cout << "treasure found !" << std::endl;
+			treasureFound = true;
+		}
 
-        drawPlayfield();
+		DrawPlayfield(false);
 
-        nbAttempts++;
+		nbAttempts++;
 
-    } while (treasureFound == false && nbAttempts < 3);
+	} while (treasureFound == false && nbAttempts < 3);
 
-    return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }
 
 // NEXT STEPS:

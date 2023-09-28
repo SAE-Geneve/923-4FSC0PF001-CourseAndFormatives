@@ -5,16 +5,15 @@
 #define WIDTH 5
 #define HEIGHT 8
 
-enum TreasureTile
+enum TreasureTiles
 {
-    plateau = 0,
-    coffre = 1,
-    monstre = 2
+    Empty = 0,
+    Coffre = 1,
+    Monstre = 2
 };
 
-static int cells[WIDTH * HEIGHT];
+extern int Cells[WIDTH * HEIGHT];
 
-void initializeMap();
-void drawPlayfield();
-int validInput();
-int input();
+void InitializeMap();
+void DrawPlayfield(bool debugMode = true);
+int Input();

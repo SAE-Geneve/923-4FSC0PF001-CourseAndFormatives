@@ -4,41 +4,41 @@
 
 #include "Map.h"
 
+int Cells[WIDTH * HEIGHT];
 
-void initializeMap()
+void InitializeMap()
 {
 
-    for(auto& c : cells)
+    for(auto& c : Cells)
     {
-        c = plateau;
+        c = Empty;
     }
 
-    int idxRandom = RandomCustom(0, WIDTH * HEIGHT);
-
-    cells[idxRandom] = coffre;
+    int idxRandom = randomcustom(0, WIDTH * HEIGHT);
+    Cells[idxRandom] = Coffre;
 
 }
 
-void drawPlayfield()
+void DrawPlayfield(bool _debugMode)
 {
     for (int row = 0; row < HEIGHT; row++) {
         for (int column = 0; column < WIDTH; column++) {
 
             int index = row * WIDTH + column;
-            int cell = cells[index];
+            int cell = Cells[index];
 
-            if (cell == 0) {
+            if (cell == TreasureTiles::Empty) {
                 std::cout << '-';
             }
             else {
-                std::cout << 'x';
+            	std::cout << 'x';
             }
         }
         std::cout << '\n';
     }
 }
 
-int validInput()
+int ValidInput()
 {
 
     bool isValidInput = true;
@@ -64,7 +64,10 @@ int validInput()
         if (isValidInput)
         {
             //std::cout << "Your number is: " << inputString << "\n";
+            std::string value = inputString.substr(0, 10);
+
             result = std::stoi(inputString);
+
             std::cout << "Your number is: " << result << "\n";
             break;
         }
@@ -75,18 +78,19 @@ int validInput()
 
 }
 
-int input()
+int Input()
 {
+
     int x;
-    int y;
+	int y;
 
     std::cout << "Coordonees de recherche ?" << std::endl;
 
     std::cout << "X ?" << std::endl;
-    x = validInput();
+    x = ValidInput();
 
     std::cout << "Y ?" << std::endl;
-    y = validInput();
+    y = ValidInput();
 
     int result;
     result = (y - 1) * WIDTH + (x - 1);
