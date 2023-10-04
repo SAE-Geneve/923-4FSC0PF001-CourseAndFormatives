@@ -24,6 +24,7 @@
     <ProjectGuid>{5e81e155-e568-496f-9f2c-486f1f6d893e}</ProjectGuid>
     <RootNamespace>Deck</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Formative-PokerGame</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -127,7 +128,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Deck.cpp" />
+    <ClCompile Include="Decks.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Card.cpp" />
+    <ClCompile Include="HandValue.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Card.h" />
+    <ClInclude Include="Decks.h" />
+    <ClInclude Include="HandValue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
