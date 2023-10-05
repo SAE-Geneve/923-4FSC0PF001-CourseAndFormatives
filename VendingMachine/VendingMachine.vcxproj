@@ -127,7 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cake.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="VendingMachine.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cake.h" />
+    <ClInclude Include="VendingMachine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

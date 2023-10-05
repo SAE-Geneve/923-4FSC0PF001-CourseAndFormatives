@@ -29,20 +29,19 @@ int main()
     {
         datas_vector.push_back(i);
     }
-    //datas_vector[8] = 63;
-    //datas_vector.at(7) = 64;
-    //datas_vector.insert(datas_vector.begin() + 8, 65);
 
+
+    // Parcours par comptage
     for(int i = 0; i < datas_vector.size(); ++i)
     {
         std::cout << datas_vector.at(i) << std::endl;
     }
-
+    // Parcours par affection dans une variable
     for(int element : datas_vector)
     {
         std::cout << element << std::endl;
     }
-
+    // Parcours par iterateur
     for(std::vector<int>::iterator it = datas_vector.begin(); it < datas_vector.end(); ++it)
     {
         std::cout << *it << std::endl;
