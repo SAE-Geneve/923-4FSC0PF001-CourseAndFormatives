@@ -25,9 +25,6 @@ enum Suit
 	Spades,
 	Clubs
 };
-std::string SuitNamesArray[] = {
-"Hearts", "Diamonds", "Spades", "Clubs"
-};
 
 struct Card
 {
@@ -37,12 +34,6 @@ struct Card
 
 
 
-std::map<Suit, std::string> SuitNamesMap = {
-	{Hearts, "Hearts"},
-	{Diamonds, "Diamonds"},
-	{Spades, "Spades"},
-	{Clubs, "Clubs"}
-};
 
 std::string ToString(Card _card);
 

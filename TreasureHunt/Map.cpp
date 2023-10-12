@@ -14,7 +14,7 @@ void InitializeMap()
         c = Empty;
     }
 
-    int idxRandom = randomcustom(0, WIDTH * HEIGHT);
+    int idxRandom = RandomCustom(0, WIDTH * HEIGHT);
     Cells[idxRandom] = Coffre;
 
 }
