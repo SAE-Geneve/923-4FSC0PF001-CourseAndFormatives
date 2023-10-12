@@ -12,7 +12,7 @@
 
 int main()
 {
-
+	/*
 	Card oneCard;
 	oneCard.rank = Ace;
 	oneCard.suit = Spades;
@@ -20,6 +20,7 @@ int main()
 
 	const Card anotherCard = GiveACard();
 	std::cout << ToString(anotherCard) << std::endl;
+	*/
 
 	FillDeck();
 
@@ -40,7 +41,6 @@ int main()
 
 	// River
 	Table.push_back(GiveACard());
-
 
 	ToString("Deck", Deck);
 	ToString("Table", Table);

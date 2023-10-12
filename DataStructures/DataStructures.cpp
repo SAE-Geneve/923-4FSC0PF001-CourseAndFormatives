@@ -35,6 +35,7 @@ int main()
     for(int i = 0; i < datas_vector.size(); ++i)
     {
         std::cout << datas_vector.at(i) << std::endl;
+        std::cout << datas_vector[i] << std::endl;
     }
     // Parcours par affection dans une variable
     for(int element : datas_vector)
@@ -84,13 +85,12 @@ int main()
     std::map<char, int> data_map;
 
     data_map.emplace('a', 10);
-    data_map.at('a');
+    data_map['a'];
     int value = data_map.at(97);
 
     std::map<std::string, int> notes_formative1;
     notes_formative1.emplace("Anthony", 6);
     notes_formative1.emplace("Linus", 6);
-
 
     if (notes_formative1.find("Jayson") != notes_formative1.end())
     {

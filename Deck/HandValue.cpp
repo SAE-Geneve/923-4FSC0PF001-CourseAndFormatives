@@ -1,5 +1,6 @@
 #include "HandValue.h"
 
+#include <algorithm>
 #include <map>
 #include <set>
 
@@ -10,85 +11,131 @@ std::string ToString(HandValue _value)
 	case HighCard: return "High Card";  break;
 	case Pair: return "Pair"; break;
 	case TwoPairs: return "Two Pairs"; break;
-	case Brelan: return "Brelan"; break;
-	case Square: return "Square"; break;
-	case Full: return "Full"; break;
-	case Suit: return "Suit"; break;
-	case Color: return "Color"; break;
+	case ThreeOfAKind: return "Brelan"; break;
+	case FourOfAKind: return "FourOfAKind"; break;
+	case FullHouse: return "Full House"; break;
+	case Straight: return "Straight"; break;
+	case StraightFlush: return "Straight Flush"; break;
 	case Flush: return "Flush"; break;
 
-	default: 
+	default:
 		return "_no_value_";
 	}
 
 
 }
 
-HandValue Evaluate(const std::vector<Card>& _hand)
+HandValue Evaluate(const std::vector<Card>& hand)
 {
 
 	// Compose Player and table Hands ------------
-	std::vector<Card> _compoundHand;
+	std::vector<Card> compoundHand;
 
-	for (auto c : _hand)
-		_compoundHand.emplace_back(c);
+	for (auto c : hand)
+		compoundHand.emplace_back(c);
 
 	for (auto c : Table)
-		_compoundHand.emplace_back(c);
+		compoundHand.emplace_back(c);
 
-	if (HasPair(_compoundHand))
-		return Pair;
-	else if (HasTwoPairs(_compoundHand))
+	// -------------------------------------------------------------------------------------------
+	/*if (HasStraightFlush(compoundHand)){
+		return StraightFlush;
+	}
+	else*/
+
+
+	if (HasFourOfAKind(compoundHand)){
+		return FourOfAKind;
+	}
+	else if (HasFlush(compoundHand)){
+		return Flush;
+	}
+	else if (HasThreeOfAKind(compoundHand)){
+		return ThreeOfAKind;
+	}
+	else if (HasTwoPairs(compoundHand)){
 		return TwoPairs;
-	else if (HasBrelan(_compoundHand))
-		return Brelan;
-	else if (HasSquare(_compoundHand))
-		return Square;
-	else
+	}
+	else if (HasPair(compoundHand)){
+		return Pair;
+	}
+	else{
 		return HighCard;
+	}
 
 }
 
-std::map<Rank, int> MapOccurences(const std::vector<Card>& compoundHand)
+std::map<Rank, int> RankOccurences(const std::vector<Card>& compoundHand)
 {
 
-	std::map<Rank, int> occurences;
+	std::map<Rank, int> rankOccurences;
 
-	for(auto c : compoundHand)
+	for (auto c : compoundHand)
 	{
-		if (occurences.find(c.rank) == occurences.end())
+		if (rankOccurences.find(c.rank) == rankOccurences.end())
 		{
-			occurences[c.rank] = 1;
-		}else
+			rankOccurences[c.rank] = 1;
+		}
+		else
 		{
-			occurences[c.rank]++;
+			rankOccurences[c.rank]++;
 		}
 	}
 
-	return occurences;
+	return rankOccurences;
 
+}
+std::map<Suit, int> SuitOccurences(const std::vector<Card>& compoundHand)
+{
+
+	std::map<Suit, int> suitOccurences;
+
+	for (auto c : compoundHand)
+	{
+		if (suitOccurences.find(c.suit) == suitOccurences.end())
+		{
+			suitOccurences[c.suit] = 1;
+		}
+		else
+		{
+			suitOccurences[c.suit]++;
+		}
+	}
+
+	return suitOccurences;
 }
 
 bool HasPair(const std::vector<Card>& compoundHand)
 {
-
-	const std::map<Rank, int> occurences = MapOccurences(compoundHand);
-
-	for(std::pair<Rank, int> p : occurences)
+	// Constitution du comptage ---------------------------------------------------
+	std::map<Rank, int> rankOccurences;
+	for (auto c : compoundHand)
 	{
-		if(p.second == 2)
+		if (rankOccurences.find(c.rank) == rankOccurences.end())
+		{
+			rankOccurences[c.rank] = 1;
+		}
+		else
+		{
+			rankOccurences[c.rank]++;
+		}
+	}
+
+	// Utilisation du comptage ---------------------------------------------------
+	for (auto p : rankOccurences)
+	{
+		if (p.second == 2)
 		{
 			return true;
 		}
 	}
-
 	return false;
-	
+
 }
 bool HasTwoPairs(const std::vector<Card>& compoundHand)
 {
 
-	const std::map<Rank, int> occurences = MapOccurences(compoundHand);
+	const std::map<Rank, int> occurences = RankOccurences(compoundHand);
 	Rank firstPair;
 
 	for (std::pair<Rank, int> p : occurences)
@@ -110,10 +157,10 @@ bool HasTwoPairs(const std::vector<Card>& compoundHand)
 	return false;
 
 }
-bool HasBrelan(const std::vector<Card>& compoundHand)
+bool HasThreeOfAKind(const std::vector<Card>& compoundHand)
 {
 
-	const std::map<Rank, int> occurences = MapOccurences(compoundHand);
+	const std::map<Rank, int> occurences = RankOccurences(compoundHand);
 
 	for (std::pair<Rank, int> p : occurences)
 	{
@@ -126,10 +173,10 @@ bool HasBrelan(const std::vector<Card>& compoundHand)
 	return false;
 
 }
-bool HasSquare(const std::vector<Card>& compoundHand)
+bool HasFourOfAKind(const std::vector<Card>& compoundHand)
 {
 
-	const std::map<Rank, int> occurences = MapOccurences(compoundHand);
+	const std::map<Rank, int> occurences = RankOccurences(compoundHand);
 
 	for (std::pair<Rank, int> p : occurences)
 	{
@@ -141,4 +188,13 @@ bool HasSquare(const std::vector<Card>& compoundHand)
 
 	return false;
 
+}
+bool HasFlush(const std::vector<Card>& compoundHand)
+{
+	const std::map<Suit, int> occurences = SuitOccurences(compoundHand);
+
+	if (std::any_of(occurences.cbegin(), occurences.cend(), [](std::pair<Suit, int> o) {return o.second >= 5; }))
+		return true;
+	
+	return false;
 }

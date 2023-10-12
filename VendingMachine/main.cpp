@@ -43,6 +43,14 @@ int main()
 	teachers.Display();
 
 	Cake chocolateCake("choco");
+	std::cout << chocolateCake.HowManyCakes() << std::endl;
+
+	Cake chipsCake("chips");
+	std::cout << chipsCake.HowManyCakes() << std::endl;
+
+	std::cout << Cake::HowManyCakes() << std::endl;
+
+	chipsCake.ResetCount();
 
 	return EXIT_SUCCESS;
 

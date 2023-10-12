@@ -10,25 +10,26 @@ enum HandValue
 	HighCard,
 	Pair,
 	TwoPairs,
-	Brelan,
-	Square,
-	Full,
-	Suit,
-	Color,
-	Flush
+	ThreeOfAKind,
+	Straight,
+	Flush,
+	FullHouse,
+	FourOfAKind,
+	StraightFlush
+	
 };
 
 std::string ToString(HandValue _value);
 
-HandValue Evaluate(const std::vector<Card>& _Hand);
+HandValue Evaluate(const std::vector<Card>& hand);
 
-std::map<Rank, int> MapOccurences(const std::vector<Card>& compoundHand);
+std::map<Rank, int> RankOccurences(const std::vector<Card>& compoundHand);
 
-bool HasPair(const std::vector<Card>& _compoundHand);
-bool HasTwoPairs(const std::vector<Card>& _compoundHand);
-bool HasBrelan(const std::vector<Card>& _compoundHand);
-bool HasSquare(const std::vector<Card>& _compoundHand);
-bool HasFull(const std::vector<Card>& _compoundHand);
-bool HasSuite(const std::vector<Card>& _compoundHand);
-bool HasColor(const std::vector<Card>& _compoundHand);
-bool HasFlush(const std::vector<Card>& _compoundHand);
+bool HasPair(const std::vector<Card>& compoundHand);
+bool HasTwoPairs(const std::vector<Card>& compoundHand);
+bool HasThreeOfAKind(const std::vector<Card>& compoundHand);
+bool HasStraight(const std::vector<Card>& compoundHand);
+bool HasFlush(const std::vector<Card>& compoundHand);
+bool HasFullHouse(const std::vector<Card>& compoundHand);
+bool HasFourOfAKind(const std::vector<Card>& compoundHand);
+bool HasStraightFlush(const std::vector<Card>& compoundHand);

@@ -22,7 +22,11 @@ void FillDeck()
 
 	std::random_device rd;
 	std::mt19937 g(rd());
+	
 	std::shuffle(Deck.begin(), Deck.end(), g);
+
+
+	int rnd = g();
 
 }
 
