@@ -13,7 +13,8 @@ protected:
 
 	std::string ToString();
 
-	void Attack(Monster ennemy);
+	void TakeDamage();
+	void Attack(Monster& ennemy);
 
 };
 
