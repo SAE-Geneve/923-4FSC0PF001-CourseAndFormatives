@@ -13,7 +13,31 @@ public:
 		Dps = dps;
 	};
 
-	void Equip();
+	void Use() override;
+	std::string ToString() override;
+
+	Weapon Equip();
 
 };
+
+
+class Potion : public Item
+{
+
+	int Dps;
+
+public:
+
+	Potion(std::string name, int dps) : Item(name)
+	{
+		Dps = dps;
+	};
+
+	void Use() override;
+	std::string ToString() override;
+
+	void Drink();
+
+};
+
 

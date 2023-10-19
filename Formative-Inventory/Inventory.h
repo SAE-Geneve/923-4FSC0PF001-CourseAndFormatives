@@ -6,11 +6,11 @@
 class Inventory
 {
 
-	std::vector<Item> ItemsStorage;
+	std::vector<Item*> ItemsStorage;
 
 public:
-	void Add(Item itemToAdd);
-	Item Equip(int number);
+	void Add(Item& itemToAdd);
+	Item* UseOne(unsigned int number);
 
 	void Display();
 
