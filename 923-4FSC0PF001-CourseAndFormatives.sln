@@ -67,6 +67,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Formatives", "Formatives", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Formative-Inventory", "Formative-Inventory\Formative-Inventory.vcxproj", "{66A1581B-B6C1-476C-8AEC-26B3C9EB7182}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JSon", "JSon\JSon.vcxproj", "{227D769E-4E0E-484B-9887-29EE02040E99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -283,6 +285,14 @@ Global
 		{66A1581B-B6C1-476C-8AEC-26B3C9EB7182}.Release|x64.Build.0 = Release|x64
 		{66A1581B-B6C1-476C-8AEC-26B3C9EB7182}.Release|x86.ActiveCfg = Release|Win32
 		{66A1581B-B6C1-476C-8AEC-26B3C9EB7182}.Release|x86.Build.0 = Release|Win32
+		{227D769E-4E0E-484B-9887-29EE02040E99}.Debug|x64.ActiveCfg = Debug|x64
+		{227D769E-4E0E-484B-9887-29EE02040E99}.Debug|x64.Build.0 = Debug|x64
+		{227D769E-4E0E-484B-9887-29EE02040E99}.Debug|x86.ActiveCfg = Debug|Win32
+		{227D769E-4E0E-484B-9887-29EE02040E99}.Debug|x86.Build.0 = Debug|Win32
+		{227D769E-4E0E-484B-9887-29EE02040E99}.Release|x64.ActiveCfg = Release|x64
+		{227D769E-4E0E-484B-9887-29EE02040E99}.Release|x64.Build.0 = Release|x64
+		{227D769E-4E0E-484B-9887-29EE02040E99}.Release|x86.ActiveCfg = Release|Win32
+		{227D769E-4E0E-484B-9887-29EE02040E99}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -308,6 +318,7 @@ Global
 		{A59DE639-34BD-4296-B0AF-9F87FA1A9F01} = {AF1691D3-BEB8-44C8-A1C4-43584F2DF936}
 		{78C0FEA7-8730-4F6B-A3B3-2B546F06CC60} = {AF1691D3-BEB8-44C8-A1C4-43584F2DF936}
 		{66A1581B-B6C1-476C-8AEC-26B3C9EB7182} = {927BE22D-15C4-4EB3-95FB-BFA6EC35A30A}
+		{227D769E-4E0E-484B-9887-29EE02040E99} = {AF1691D3-BEB8-44C8-A1C4-43584F2DF936}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE016960-B81C-4463-9101-CDBE1A0F10B5}
