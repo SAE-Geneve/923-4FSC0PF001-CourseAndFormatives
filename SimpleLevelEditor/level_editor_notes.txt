@@ -1,0 +1,13 @@
+
+Level editor
+============
+
+Goal: draw tilemap with where tile can be solid or empty. Allow the player to make tiles solid or empty using the mouse (eg. left-click to make solid, right-click to make empty).
+
+Questions
+ 1. how do we store the tilemap?
+    -> array of bools. "false" means empty, "true" means wall.
+ 2. how do we draw the tilemap?
+    -> shape that we move and draw
+ 3. how do we determine what tile is hovered?
+    -> mouse position divided by tile pixel size
