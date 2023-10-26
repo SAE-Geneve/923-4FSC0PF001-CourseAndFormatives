@@ -1,3 +1,19 @@
 {
-    "barreDeVie": 96
+    "tableau": [
+        {
+            "force": 5,
+            "name": "potion",
+            "type": 0
+        },
+        {
+            "force": 12,
+            "name": "Excalibur",
+            "type": 1
+        },
+        {
+            "force": 24,
+            "name": "Thoridal",
+            "type": 2
+        }
+    ]
 }

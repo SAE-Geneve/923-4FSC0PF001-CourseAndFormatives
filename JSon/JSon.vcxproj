@@ -127,11 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="item.cpp" />
     <ClCompile Include="JSon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="datas.json" />
-    <None Include="persons.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="item.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
