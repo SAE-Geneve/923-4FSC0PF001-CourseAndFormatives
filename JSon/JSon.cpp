@@ -3,30 +3,85 @@
 
 #include <nlohmann/json.hpp>
 
+#include "item.h"
+
 using json = nlohmann::json;
+
+void Load(std::string fileName, std::vector<item*>& datas)
+{
+	json inJson;
+
+	// Charger les données ----------------------------------------------------------
+	std::ifstream inStream(fileName);
+	inJson = json::parse(inStream);
+
+	if(inJson.contains("tableau"))
+	{
+		for(auto& element : inJson["tableau"])
+		{
+
+			item* i = new item;
+
+			i->force = element["force"];
+			i->name = element["name"];
+
+			int type = -1;
+			if(element.contains("type"))
+			{
+				i->type = element["type"];
+			}
+
+
+			datas.emplace_back(i);
+
+			//std::cout << "vector element : " << datas.back().name << ":" << datas.back().force << std::endl;
+			//std::cout << "-------------------------------------------------------------------" << std::endl;
+
+		}
+	}
+	inStream.close();
+}
+
+void Save(std::string fileName, std::vector<item*>& datas)
+{
+	json out;
+
+	// Sauvegarde des données -------------------------------------------------------
+
+	for(auto& element : datas)
+	{
+		json jsonElement;
+		jsonElement["force"] = element->force;
+		jsonElement["name"] = element->name;
+		jsonElement["type"] = element->type;
+
+		out["tableau"].push_back(jsonElement);
+	}
+
+	std::ofstream o(fileName);
+	o << std::setw(4) << out << std::endl;
+	o.close();
+}
 
 int main() {
 
-	int barreDeVie = 100;
-	json j;
+	std::vector<item*> items;
 
-	// Charger les données ----------------------------------------------------------
-	std::ifstream i("datas.json");
-	j = json::parse(i);
+	json inJson, out;
 
-	barreDeVie = j["barreDeVie"];
-	i.close();
+	Load("datas.json", items);
 
-	// Actions de l'inventaire ------------------------------------------------------
-	barreDeVie--;
-	std::cout << "Barre de vie = " << barreDeVie << std::endl;
+	for(auto& item : items)
+	{
+		std::cout << "vector element : " << item->name << ":" << item->force << std::endl;
+		std::cout << "-------------------------------------------------------------------" << std::endl;
 
-	// Sauvegarde les données -------------------------------------------------------
-	j["barreDeVie"] = barreDeVie;
+	}
 
-	std::ofstream o("datas.json");
-	o << std::setw(4) << j << std::endl;
-	o.close();
+	Save("datas.json", items);
+
+
+	
 
 	return EXIT_SUCCESS;
 
