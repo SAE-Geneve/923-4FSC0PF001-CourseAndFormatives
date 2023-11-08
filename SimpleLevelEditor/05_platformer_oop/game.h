@@ -1,6 +1,7 @@
 #pragma once
 
 #include "tilemap.h"
+#include <SFML/Graphics.hpp>
 
 class Game
 {

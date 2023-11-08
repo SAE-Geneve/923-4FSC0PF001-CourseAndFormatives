@@ -4,8 +4,10 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <unistd.h>
 #include <stdio.h>
+#ifndef _WIN32
+#include <unistd.h>
+#endif
 
 #include "game.h"
 #include "tilemap.h"
