@@ -1,6 +1,7 @@
 #pragma once
 
 #include "tilemap.h"
+#include "HUD.h"
 
 class Game
 {
@@ -18,6 +19,11 @@ class Game
     sf::RectangleShape debug_limit_shape_horizontal_;
     sf::CircleShape player_origin_shape_;
     sf::RectangleShape player_box_shape_;
+
+    sf::Sprite tile_sprite;
+    sf::Texture tile_texture;
+
+    HUD hud_;
 
     void init();
 

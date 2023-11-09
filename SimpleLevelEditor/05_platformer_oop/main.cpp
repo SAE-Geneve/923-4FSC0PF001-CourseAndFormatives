@@ -4,7 +4,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <unistd.h>
 #include <stdio.h>
 
 #include "game.h"

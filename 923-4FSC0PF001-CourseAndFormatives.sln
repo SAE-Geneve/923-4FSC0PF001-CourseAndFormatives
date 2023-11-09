@@ -69,6 +69,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Formative-Inventory", "Form
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JSon", "JSon\JSon.vcxproj", "{227D769E-4E0E-484B-9887-29EE02040E99}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "05_platformer_oop", "SimpleLevelEditor\05_platformer_oop\05_platformer_oop.vcxproj", "{838644FA-3230-4283-ACB9-A08742A702CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -293,6 +295,14 @@ Global
 		{227D769E-4E0E-484B-9887-29EE02040E99}.Release|x64.Build.0 = Release|x64
 		{227D769E-4E0E-484B-9887-29EE02040E99}.Release|x86.ActiveCfg = Release|Win32
 		{227D769E-4E0E-484B-9887-29EE02040E99}.Release|x86.Build.0 = Release|Win32
+		{838644FA-3230-4283-ACB9-A08742A702CF}.Debug|x64.ActiveCfg = Debug|x64
+		{838644FA-3230-4283-ACB9-A08742A702CF}.Debug|x64.Build.0 = Debug|x64
+		{838644FA-3230-4283-ACB9-A08742A702CF}.Debug|x86.ActiveCfg = Debug|Win32
+		{838644FA-3230-4283-ACB9-A08742A702CF}.Debug|x86.Build.0 = Debug|Win32
+		{838644FA-3230-4283-ACB9-A08742A702CF}.Release|x64.ActiveCfg = Release|x64
+		{838644FA-3230-4283-ACB9-A08742A702CF}.Release|x64.Build.0 = Release|x64
+		{838644FA-3230-4283-ACB9-A08742A702CF}.Release|x86.ActiveCfg = Release|Win32
+		{838644FA-3230-4283-ACB9-A08742A702CF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

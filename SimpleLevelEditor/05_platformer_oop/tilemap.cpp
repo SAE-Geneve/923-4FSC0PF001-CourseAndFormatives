@@ -4,7 +4,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <unistd.h>
 #include <stdio.h>
 
 #include "tilemap.h"
@@ -21,15 +20,19 @@ bool Tilemap::InBounds(sf::Vector2i coords)
 void Tilemap::Save()
 {
     FILE* f = fopen("level.data", "wb");
-    fwrite(cells, sizeof(cells), 1, f);
-    fclose(f);
+        fwrite(cells, sizeof(cells), 1, f);
+        fclose(f);
 }
 
 void Tilemap::Load()
 {
     FILE* f = fopen("level.data", "rb");
-    fread(cells, sizeof(cells), 1, f);
-    fclose(f);
+    if(f)
+    {
+	    fread(cells, sizeof(cells), 1, f);
+        fclose(f);
+    }
+    
 }
 
 sf::Vector2i Tilemap::PosToCoords(sf::Vector2f world_position)
@@ -46,5 +49,7 @@ bool Tilemap::TileAt(sf::Vector2i tile_coord)
         return true;
     }
     int index = tile_coord.y * TILEMAP_WIDTH + tile_coord.x;
-    return cells[index];
+
+    return cells[index] != (int)TileType::kNotile;
+
 }

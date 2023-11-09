@@ -6,10 +6,20 @@
 #define TILEMAP_HEIGHT 12
 #define TILE_SIZE_PX 50
 
+
+
 class Tilemap
 {
-    public:
-    bool cells[TILEMAP_WIDTH * TILEMAP_HEIGHT] = {0}; // initialize a bool array with all zeroes (false).
+
+public:
+    enum class TileType
+    {
+        kNotile = 0,
+        kYellow,
+        kRed
+    };
+
+    int cells[TILEMAP_WIDTH * TILEMAP_HEIGHT] = {0}; // initialize a bool array with all zeroes (false).
 
     bool InBounds(sf::Vector2i coords);
     void Save();
