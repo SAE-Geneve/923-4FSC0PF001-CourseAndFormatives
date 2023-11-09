@@ -5,7 +5,7 @@ void Game::init()
 	// Create the window
 	window_.create(sf::VideoMode(800, 600), "Platformer");
 	window_.setVerticalSyncEnabled(false);
-	window_.setFramerateLimit(30);
+	window_.setFramerateLimit(100);
 
 	// Create tile shape
 	tile_shape_ = sf::RectangleShape(sf::Vector2f(TILE_SIZE_PX, TILE_SIZE_PX));
@@ -62,9 +62,12 @@ void Game::update()
 	float limit_y_high = 1000000000.f;
 
 	hud_.UpdateChrono();
+	frameStart = std::chrono::high_resolution_clock::now();
 
-	sf::Vector2i player_coords = tilemap_.PosToCoords(player_pos_);
-	const int margin = 1;
+	hud_.Update();
+
+	const sf::Vector2i player_coords = tilemap_.PosToCoords(player_pos_);
+	constexpr int margin = 1;
 	if (tilemap_.TileAt(player_coords + sf::Vector2i(1, 0))) {
 		limit_x_high = (player_coords.x + 1) * TILE_SIZE_PX - margin;
 	}
