@@ -50,6 +50,6 @@ bool Tilemap::TileAt(sf::Vector2i tile_coord)
     }
     int index = tile_coord.y * TILEMAP_WIDTH + tile_coord.x;
 
-    return cells[index] != (int)TileType::kNotile;
+    return cells[index] != (int)TileType::kNoTile;
 
 }

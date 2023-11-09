@@ -1,7 +1,9 @@
 #include "game.h"
 
+
 void Game::init()
 {
+
 	// Create the window
 	window_.create(sf::VideoMode(800, 600), "Platformer");
 	window_.setVerticalSyncEnabled(false);
@@ -49,7 +51,7 @@ void Game::init()
 	player_box_shape_.setFillColor(sf::Color(210, 210, 210));
 
 
-	hud_.Init();
+	hud_.Init(window_);
 	hud_.StartChrono();
 
 }
@@ -61,7 +63,8 @@ void Game::update()
 	float limit_y_low = -1000000000.f;
 	float limit_y_high = 1000000000.f;
 
-	hud_.UpdateChrono();
+	// Performed. Now perform GPU stuff...
+	deltaTime_ = (float)std::chrono::duration_cast<std::chrono::milliseconds>(frameEnd - frameStart).count();
 	frameStart = std::chrono::high_resolution_clock::now();
 
 	hud_.Update();
@@ -119,14 +122,15 @@ void Game::update()
 		player_vel_.y = kFallLimit;
 	}
 
-	constexpr float kMinFallForce = 0.1f;
-	constexpr float kMaxFallForce = 0.2f;
+	constexpr float kMinFallForce = 0.15f;
+	constexpr float kMaxFallForce = 0.6f;
 	// Gravity
 	player_vel_.y += jump_key_is_down ? kMinFallForce : kMaxFallForce; // accel
 
 	delta += sf::Vector2f(0, player_vel_.y);
 
 	player_pos_ += delta;
+
 	if (player_pos_.x >= limit_x_high - (player_size.x / 2)) {
 		player_pos_.x = limit_x_high - (player_size.x / 2);
 	}
@@ -178,7 +182,7 @@ void Game::update()
 
 			}else
 			{
-				tilemap_.cells[mouseCoord_TilesRelative.y * TILEMAP_WIDTH + mouseCoord_TilesRelative.x] = (int)Tilemap::TileType::kNotile;
+				tilemap_.cells[mouseCoord_TilesRelative.y * TILEMAP_WIDTH + mouseCoord_TilesRelative.x] = (int)Tilemap::TileType::kNoTile;
 			}
 		}
 	}
@@ -209,7 +213,7 @@ void Game::update()
 				window_.draw(tile_shape_);
 				break;
 
-			case Tilemap::TileType::kNotile:
+			case Tilemap::TileType::kNoTile:
 			default:
 				break;
 			}
@@ -248,7 +252,12 @@ void Game::update()
 	player_origin_shape_.setPosition(player_pos_.x, player_pos_.y);
 	window_.draw(player_origin_shape_);
 
+	hud_.FrameTime(deltaTime_);
 
 	// end the current frame
 	window_.display();
+
+	// window.draw, etc.
+	frameEnd = std::chrono::high_resolution_clock::now();
+
 }
