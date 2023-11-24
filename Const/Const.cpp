@@ -11,16 +11,19 @@ public:
     int m_ = 0;
 };
 
+
+
 class ConstEntity
 {
 public:
     std::string name;
-    const int m_ = 0;
+	const int m_ = 0;
 
     ConstEntity& operator= (const ConstEntity& ee)
     {
-        this->name = ee.name;
-    	return *this;
+        ConstEntity e;
+    	//this->name = ee.name;
+    	return e;
     }
 };
 
@@ -47,7 +50,7 @@ int main()
     ConstEntity g, h;
     //g.m_ = 12; // m_ is a const member
     h.name = "h"; g.name = "g";
-    g = h; // Should not work (deleted function issue), thanks to copy operator
+    //g = h; // Should not work (deleted function issue), thanks to copy operator
 
     std::cout << "G = " << g.name << " H = " << h.name << " Should have switch...." << std::endl;
 
@@ -72,8 +75,13 @@ int main()
         add_entity.name = std::to_string(i);
         const_entity_vector.emplace_back(add_entity);
     }
-    std::_Erase_remove_if(const_entity_vector, [](ConstEntity& e) {return e.name == "2"; });
-    std::_Erase_remove_if(const_entity_vector, [](ConstEntity& e) {return e.name == "7"; });
-    std::_Erase_remove_if(const_entity_vector, [](ConstEntity& e) {return e.name == "12"; });
+    std::cout << "Removed operation 1 " << std::endl;
+    std::remove_if(const_entity_vector.begin(), const_entity_vector.end(), [](ConstEntity& e) {return e.name == "0"; });
+
+    std::cout << "Removed operation 2 " << std::endl;
+    std::remove_if(const_entity_vector.begin(), const_entity_vector.end(), [](ConstEntity& e) {return e.name == "7"; });
+
+    std::cout << "Removed operation 3 " << std::endl;
+    std::remove_if(const_entity_vector.begin(), const_entity_vector.end(), [](ConstEntity& e) {return e.name == "12"; });
 
 }
